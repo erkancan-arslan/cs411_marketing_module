@@ -1,0 +1,502 @@
+[
+  {
+    "id": "593d2491-bcb6-45ce-ac8d-df236661e4b7",
+    "name": "Ali Kurt",
+    "email": "ali.kurt359@hotmail.com",
+    "city": "Gaziantep",
+    "age": 28,
+    "spending_score": 16,
+    "total_spent": 13572.47,
+    "is_active": true
+  },
+  {
+    "id": "a127ca58-78e2-4660-9c75-e1769623dbe0",
+    "name": "Begüm Kılıç",
+    "email": "begum.kilic732@gmail.com",
+    "city": "Istanbul",
+    "age": 18,
+    "spending_score": 6,
+    "total_spent": 49919.77,
+    "is_active": true
+  },
+  {
+    "id": "97300867-57be-4e68-82cd-b0a50c253b5b",
+    "name": "Selin Aslan",
+    "email": "selin.aslan331@hotmail.com",
+    "city": "Ankara",
+    "age": 18,
+    "spending_score": 4,
+    "total_spent": 14602.36,
+    "is_active": true
+  },
+  {
+    "id": "82a587ca-4c40-429b-a261-31853899ccf3",
+    "name": "Berk Kara",
+    "email": "berk.kara276@outlook.com",
+    "city": "Konya",
+    "age": 54,
+    "spending_score": 64,
+    "total_spent": 22576.5,
+    "is_active": true
+  },
+  {
+    "id": "ff7180e2-6134-427c-98b4-49af831de47d",
+    "name": "Arda Kılıç",
+    "email": "arda.kilic75@outlook.com",
+    "city": "Gaziantep",
+    "age": 60,
+    "spending_score": 41,
+    "total_spent": 32154.64,
+    "is_active": true
+  },
+  {
+    "id": "523364ce-97ee-464b-90d6-bb91404dcfc2",
+    "name": "Ece Tekin",
+    "email": "ece.tekin227@gmail.com",
+    "city": "Gaziantep",
+    "age": 28,
+    "spending_score": 60,
+    "total_spent": 35168.02,
+    "is_active": false
+  },
+  {
+    "id": "88d6982d-0916-490c-ad1a-234993d04d46",
+    "name": "Tuğba Doğan",
+    "email": "tugba.dogan330@hotmail.com",
+    "city": "Istanbul",
+    "age": 32,
+    "spending_score": 4,
+    "total_spent": 30085.67,
+    "is_active": true
+  },
+  {
+    "id": "180724aa-de73-4988-80e6-701e6bb7acf0",
+    "name": "Deniz Ünal",
+    "email": "deniz.unal354@outlook.com",
+    "city": "Konya",
+    "age": 22,
+    "spending_score": 97,
+    "total_spent": 41625.58,
+    "is_active": true
+  },
+  {
+    "id": "7eb4d6f2-98c2-497a-939e-80ecb7114905",
+    "name": "Hatice Aydın",
+    "email": "hatice.aydin567@mynet.com",
+    "city": "Izmir",
+    "age": 36,
+    "spending_score": 62,
+    "total_spent": 49900.25,
+    "is_active": true
+  },
+  {
+    "id": "61c9c3d0-abfd-4cda-8dfc-ddf7bcc7eb88",
+    "name": "Ege Aksoy",
+    "email": "ege.aksoy370@yahoo.com",
+    "city": "Izmir",
+    "age": 37,
+    "spending_score": 17,
+    "total_spent": 7778.08,
+    "is_active": true
+  },
+  {
+    "id": "305bba4d-756e-47f9-80e1-b558253f245a",
+    "name": "Hatice Acar",
+    "email": "hatice.acar206@yahoo.com",
+    "city": "Konya",
+    "age": 37,
+    "spending_score": 8,
+    "total_spent": 28845.89,
+    "is_active": true
+  },
+  {
+    "id": "f39a4f28-8680-4cc3-bf05-d43ca984ead0",
+    "name": "Ahmet Ünal",
+    "email": "ahmet.unal337@gmail.com",
+    "city": "Adana",
+    "age": 52,
+    "spending_score": 22,
+    "total_spent": 25706.81,
+    "is_active": true
+  },
+  {
+    "id": "49dad110-3549-41f1-bab5-57374b0a6d8c",
+    "name": "Hüseyin Çetin",
+    "email": "huseyin.cetin257@yahoo.com",
+    "city": "Istanbul",
+    "age": 29,
+    "spending_score": 12,
+    "total_spent": 24958.98,
+    "is_active": true
+  },
+  {
+    "id": "9f0b834a-c344-46bc-84a2-55b3a03ef6d0",
+    "name": "Nur Doğan",
+    "email": "nur.dogan802@gmail.com",
+    "city": "Ankara",
+    "age": 49,
+    "spending_score": 50,
+    "total_spent": 23534.84,
+    "is_active": true
+  },
+  {
+    "id": "84b20af3-e04e-4033-926f-a912a4daae21",
+    "name": "Zeynep Bulut",
+    "email": "zeynep.bulut697@hotmail.com",
+    "city": "Gaziantep",
+    "age": 54,
+    "spending_score": 25,
+    "total_spent": 8954.02,
+    "is_active": true
+  },
+  {
+    "id": "e95dac92-30f3-456a-805d-bb856324c1df",
+    "name": "İrem Ünal",
+    "email": "i̇rem.unal315@outlook.com",
+    "city": "Adana",
+    "age": 50,
+    "spending_score": 58,
+    "total_spent": 24507.15,
+    "is_active": false
+  },
+  {
+    "id": "d84a1f30-75a0-45d1-a6f1-833ebad58528",
+    "name": "Ahmet Aydin",
+    "email": "ahmet.aydin285@outlook.com",
+    "city": "Izmir",
+    "age": 23,
+    "spending_score": 50,
+    "total_spent": 34916.18,
+    "is_active": true
+  },
+  {
+    "id": "37b1e005-7565-43af-97f8-c4de988a36c1",
+    "name": "Ahmet Kaya",
+    "email": "ahmet.kaya359@mynet.com",
+    "city": "Bursa",
+    "age": 59,
+    "spending_score": 68,
+    "total_spent": 12943.15,
+    "is_active": true
+  },
+  {
+    "id": "e4232789-f22b-464f-97dc-6d2cbee76c05",
+    "name": "Yusuf Özdemir",
+    "email": "yusuf.ozdemir262@hotmail.com",
+    "city": "Izmir",
+    "age": 59,
+    "spending_score": 52,
+    "total_spent": 31399.1,
+    "is_active": true
+  },
+  {
+    "id": "d538a8e1-cd1d-47ea-9e43-2110cd15c2df",
+    "name": "Fatma Yılmaz",
+    "email": "fatma.yilmaz340@yahoo.com",
+    "city": "Ankara",
+    "age": 39,
+    "spending_score": 96,
+    "total_spent": 28953.82,
+    "is_active": true
+  },
+  {
+    "id": "d222c536-9e18-4e0b-baed-bd6343baa9d4",
+    "name": "Mustafa Tekin",
+    "email": "mustafa.tekin911@hotmail.com",
+    "city": "Antalya",
+    "age": 34,
+    "spending_score": 84,
+    "total_spent": 37947.75,
+    "is_active": true
+  },
+  {
+    "id": "71d9a9bd-3b7b-4ab3-abad-c30cb806fa61",
+    "name": "Elif Özdemir",
+    "email": "elif.ozdemir281@yahoo.com",
+    "city": "Antalya",
+    "age": 33,
+    "spending_score": 96,
+    "total_spent": 38823.07,
+    "is_active": true
+  },
+  {
+    "id": "463d5b15-1e6d-4f7c-a641-913b58da2e12",
+    "name": "Emre Aydın",
+    "email": "emre.aydin633@yahoo.com",
+    "city": "Bursa",
+    "age": 47,
+    "spending_score": 37,
+    "total_spent": 17138.07,
+    "is_active": false
+  },
+  {
+    "id": "21c78bba-11a3-4fa9-947b-0deb4e688f95",
+    "name": "Sultan Özer",
+    "email": "sultan.ozer947@hotmail.com",
+    "city": "Istanbul",
+    "age": 65,
+    "spending_score": 19,
+    "total_spent": 10854.89,
+    "is_active": true
+  },
+  {
+    "id": "9517590a-acc6-4c3e-bf17-27d51f5ce73a",
+    "name": "Burcu Bulut",
+    "email": "burcu.bulut603@outlook.com",
+    "city": "Bursa",
+    "age": 28,
+    "spending_score": 25,
+    "total_spent": 47077.66,
+    "is_active": false
+  },
+  {
+    "id": "a1102fb8-c1af-442c-8816-995d4192e9e5",
+    "name": "Sultan Tekin",
+    "email": "sultan.tekin806@gmail.com",
+    "city": "Bursa",
+    "age": 56,
+    "spending_score": 12,
+    "total_spent": 13552.04,
+    "is_active": true
+  },
+  {
+    "id": "cbeb0ae4-4457-4bd2-a7b7-a630ff550be6",
+    "name": "Selin Yılmaz",
+    "email": "selin.yilmaz174@hotmail.com",
+    "city": "Bursa",
+    "age": 35,
+    "spending_score": 73,
+    "total_spent": 47679.82,
+    "is_active": true
+  },
+  {
+    "id": "dbb216fd-6c0a-44df-abe2-d05c0fe7d0a1",
+    "name": "Gizem Uzun",
+    "email": "gizem.uzun754@yahoo.com",
+    "city": "Gaziantep",
+    "age": 44,
+    "spending_score": 70,
+    "total_spent": 29588.38,
+    "is_active": false
+  },
+  {
+    "id": "bec352b5-6be2-4b78-9fa5-57f8a72421e1",
+    "name": "Hasan Şahin",
+    "email": "hasan.sahin907@gmail.com",
+    "city": "Antalya",
+    "age": 52,
+    "spending_score": 43,
+    "total_spent": 37907.48,
+    "is_active": true
+  },
+  {
+    "id": "161d734d-aa97-4bd9-8042-5d6ef81fe743",
+    "name": "İbrahim Yılmaz",
+    "email": "i̇brahim.yilmaz244@mynet.com",
+    "city": "Izmir",
+    "age": 55,
+    "spending_score": 70,
+    "total_spent": 39252.78,
+    "is_active": false
+  },
+  {
+    "id": "108c3063-96da-4339-bf14-b5eefa7e26c6",
+    "name": "Ahmet Aydın",
+    "email": "ahmet.aydin220@outlook.com",
+    "city": "Konya",
+    "age": 48,
+    "spending_score": 15,
+    "total_spent": 24556.67,
+    "is_active": true
+  },
+  {
+    "id": "43c9d9e3-6df3-428d-b87e-fe4c74c91221",
+    "name": "Deniz Tekin",
+    "email": "deniz.tekin675@hotmail.com",
+    "city": "Izmir",
+    "age": 33,
+    "spending_score": 23,
+    "total_spent": 13953.73,
+    "is_active": true
+  },
+  {
+    "id": "60bf19ef-39a2-4a5a-ae29-e87e2d6a91c6",
+    "name": "Fatma Arslan",
+    "email": "fatma.arslan805@mynet.com",
+    "city": "Antalya",
+    "age": 34,
+    "spending_score": 54,
+    "total_spent": 34884.76,
+    "is_active": true
+  },
+  {
+    "id": "dae28c07-3f3a-4da1-8724-ca69b55a93da",
+    "name": "Zeynep Yılmaz",
+    "email": "zeynep.yilmaz206@gmail.com",
+    "city": "Ankara",
+    "age": 27,
+    "spending_score": 95,
+    "total_spent": 1642.3,
+    "is_active": true
+  },
+  {
+    "id": "7bf0b862-a7df-42a4-b8ec-0d6a46ca4bcf",
+    "name": "Selin Yıldırım",
+    "email": "selin.yildirim928@yahoo.com",
+    "city": "Istanbul",
+    "age": 61,
+    "spending_score": 99,
+    "total_spent": 8762.05,
+    "is_active": true
+  },
+  {
+    "id": "b10ded62-8cc8-49be-aaec-b0bafc039993",
+    "name": "Emine Yıldırım",
+    "email": "emine.yildirim469@yahoo.com",
+    "city": "Konya",
+    "age": 23,
+    "spending_score": 88,
+    "total_spent": 11729.34,
+    "is_active": true
+  },
+  {
+    "id": "2a1d9bed-ea8c-4d91-bcb0-c652a038c7d5",
+    "name": "İbrahim Öztürk",
+    "email": "i̇brahim.ozturk274@mynet.com",
+    "city": "Antalya",
+    "age": 23,
+    "spending_score": 51,
+    "total_spent": 49935.7,
+    "is_active": true
+  },
+  {
+    "id": "ba8bb609-9de3-470b-bc40-dda6cd658237",
+    "name": "Ali Koç",
+    "email": "ali.koc230@hotmail.com",
+    "city": "Gaziantep",
+    "age": 46,
+    "spending_score": 89,
+    "total_spent": 38429.83,
+    "is_active": true
+  },
+  {
+    "id": "eefaa3cd-2611-4ece-9799-a640e353931a",
+    "name": "Burcu Güneş",
+    "email": "burcu.gunes960@hotmail.com",
+    "city": "Ankara",
+    "age": 46,
+    "spending_score": 23,
+    "total_spent": 27809.92,
+    "is_active": false
+  },
+  {
+    "id": "a745f5c0-2741-46f7-93f8-a656292bf534",
+    "name": "Merve Kara",
+    "email": "merve.kara284@hotmail.com",
+    "city": "Adana",
+    "age": 34,
+    "spending_score": 48,
+    "total_spent": 35276.77,
+    "is_active": true
+  },
+  {
+    "id": "2a8d2fcc-0bcc-4a0f-b016-eac971383846",
+    "name": "Yusuf Yılmaz",
+    "email": "yusuf.yilmaz179@gmail.com",
+    "city": "Istanbul",
+    "age": 64,
+    "spending_score": 42,
+    "total_spent": 43880.04,
+    "is_active": true
+  },
+  {
+    "id": "67c3dc1b-9af9-4710-95a5-a9fb4c0bf6a4",
+    "name": "Ceren Erdoğan",
+    "email": "ceren.erdogan494@hotmail.com",
+    "city": "Bursa",
+    "age": 21,
+    "spending_score": 80,
+    "total_spent": 43477.2,
+    "is_active": false
+  },
+  {
+    "id": "2cbaf595-c028-4b73-a032-1a4836aea422",
+    "name": "Burak Kaya",
+    "email": "burak.kaya390@mynet.com",
+    "city": "Ankara",
+    "age": 42,
+    "spending_score": 4,
+    "total_spent": 43454.26,
+    "is_active": true
+  },
+  {
+    "id": "7634efdf-b03a-49a1-a36b-c0294a967d3f",
+    "name": "Gizem Uzun",
+    "email": "gizem.uzun599@gmail.com",
+    "city": "Ankara",
+    "age": 57,
+    "spending_score": 75,
+    "total_spent": 37433.36,
+    "is_active": true
+  },
+  {
+    "id": "5be8b934-4a84-4f60-aaa7-6a8624049f4f",
+    "name": "Nur Yıldırım",
+    "email": "nur.yildirim698@gmail.com",
+    "city": "Gaziantep",
+    "age": 60,
+    "spending_score": 53,
+    "total_spent": 41461.63,
+    "is_active": false
+  },
+  {
+    "id": "d0b68312-5b8a-4829-b92f-1a3edda8da1a",
+    "name": "Ahmet Aksoy",
+    "email": "ahmet.aksoy166@yahoo.com",
+    "city": "Konya",
+    "age": 21,
+    "spending_score": 39,
+    "total_spent": 44047.95,
+    "is_active": true
+  },
+  {
+    "id": "b78575f6-0f8d-43f2-98a8-eeee3c7b6a86",
+    "name": "Zeynep Kara",
+    "email": "zeynep.kara812@mynet.com",
+    "city": "Adana",
+    "age": 51,
+    "spending_score": 61,
+    "total_spent": 28981.35,
+    "is_active": true
+  },
+  {
+    "id": "109e6294-f1f1-4fcb-a742-6ee354c8c6bc",
+    "name": "Zeynep Yıldız",
+    "email": "zeynep.yildiz485@hotmail.com",
+    "city": "Antalya",
+    "age": 20,
+    "spending_score": 96,
+    "total_spent": 26792.26,
+    "is_active": true
+  },
+  {
+    "id": "df5715b8-b64e-471f-9076-105b5a604a22",
+    "name": "Mustafa Yılmaz",
+    "email": "mustafa.yilmaz372@gmail.com",
+    "city": "Adana",
+    "age": 39,
+    "spending_score": 49,
+    "total_spent": 46513.52,
+    "is_active": true
+  },
+  {
+    "id": "5c84b499-7c35-484d-a7cd-f09c20a5ced1",
+    "name": "Ayşe Şahin",
+    "email": "ayse.sahin31@yahoo.com",
+    "city": "Adana",
+    "age": 52,
+    "spending_score": 55,
+    "total_spent": 39016.72,
+    "is_active": false
+  }
+]
