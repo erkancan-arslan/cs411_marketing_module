@@ -29,5 +29,182 @@
       "opened": 0,
       "clicked": 0
     }
+  },
+  {
+    "id": "b431c764-5e8b-4981-967f-00639a9c47bd",
+    "title": "Refinement Test Campaign",
+    "content_template": "Hello {name}! Special offer just for you.",
+    "target_segment_criteria": {
+      "city": "Bursa",
+      "is_active": true
+    },
+    "status": "Sent",
+    "created_at": "2025-12-11T00:19:44.929285",
+    "stats": {
+      "sent": 3,
+      "opened": 1,
+      "clicked": 0
+    }
+  },
+  {
+    "id": "c8077edd-064e-4b2d-bb92-fa7f4bf3a7de",
+    "title": "Refinement Test Campaign",
+    "content_template": "Hello {name}! Special offer just for you.",
+    "target_segment_criteria": {
+      "city": "Bursa",
+      "is_active": true
+    },
+    "status": "Sent",
+    "created_at": "2025-12-11T00:20:08.246345",
+    "stats": {
+      "sent": 3,
+      "opened": 1,
+      "clicked": 0
+    }
+  },
+  {
+    "id": "15ed0783-35fb-41ba-8610-deb678e0a6aa",
+    "title": "Phase 3 Analytics Test - All Active",
+    "content_template": "Hi {name}, check out our new offers!",
+    "target_segment_criteria": {
+      "is_active": true
+    },
+    "status": "Sent",
+    "created_at": "2025-12-11T00:20:25.229568",
+    "stats": {
+      "sent": 40,
+      "opened": 24,
+      "clicked": 6
+    }
+  },
+  {
+    "id": "65e42dcc-60bc-40d1-a3e9-54b920cd5cf4",
+    "title": "Kış İndirimi",
+    "content_template": "Hello {name} we have kış indirimi",
+    "target_segment_criteria": {
+      "is_active": true
+    },
+    "status": "Sent",
+    "created_at": "2025-12-11T00:24:38.603134",
+    "stats": {
+      "sent": 40,
+      "opened": 24,
+      "clicked": 2
+    }
+  },
+  {
+    "id": "a781fc92-f8a2-4732-a4c5-a0e1bdee31eb",
+    "title": "asdf",
+    "content_template": "asdf",
+    "target_segment_criteria": {
+      "city": "Antalya"
+    },
+    "status": "Sent",
+    "created_at": "2025-12-11T00:25:03.282715",
+    "stats": {
+      "sent": 0,
+      "opened": 0,
+      "clicked": 0
+    }
+  },
+  {
+    "id": "efd769aa-2e46-4d1f-8ef5-53c35fbd9777",
+    "title": "VIP Customer Exclusive - Full Targeting Test",
+    "content_template": "Dear {name}, as a valued customer from {city}, you qualify for our exclusive offer!",
+    "target_segment_criteria": {
+      "city": "Istanbul",
+      "min_age": 25,
+      "max_age": 45,
+      "min_spending_score": 50,
+      "max_spending_score": 90,
+      "min_spent": 15000.0,
+      "max_spent": 40000.0,
+      "is_active": true
+    },
+    "status": "Draft",
+    "created_at": "2025-12-11T00:27:48.863295",
+    "stats": {
+      "sent": 0,
+      "opened": 0,
+      "clicked": 0
+    }
+  },
+  {
+    "id": "3174b977-f3e0-4a6a-883b-827b40d4cf05",
+    "title": "High-Value Customer Appreciation",
+    "content_template": "Dear {name}, thank you for being our premium customer!",
+    "target_segment_criteria": {
+      "min_spent": 20000.0,
+      "min_spending_score": 60,
+      "is_active": true
+    },
+    "status": "Draft",
+    "created_at": "2025-12-11T00:27:48.864135",
+    "stats": {
+      "sent": 0,
+      "opened": 0,
+      "clicked": 0
+    }
+  },
+  {
+    "id": "224286ba-3c7c-4100-9532-eed57046f4a1",
+    "title": "VIP Customer Exclusive - Full Targeting Test",
+    "content_template": "Dear {name}, as a valued customer from {city}, you qualify for our exclusive offer!",
+    "target_segment_criteria": {
+      "city": "Istanbul",
+      "min_age": 25,
+      "max_age": 45,
+      "min_spending_score": 50,
+      "max_spending_score": 90,
+      "min_spent": 15000.0,
+      "max_spent": 40000.0,
+      "is_active": true
+    },
+    "status": "Draft",
+    "created_at": "2025-12-11T00:28:24.617040",
+    "stats": {
+      "sent": 0,
+      "opened": 0,
+      "clicked": 0
+    }
+  },
+  {
+    "id": "e5613db8-6d84-4705-9f2f-223f1f055de5",
+    "title": "High-Value Customer Appreciation",
+    "content_template": "Dear {name}, thank you for being our premium customer!",
+    "target_segment_criteria": {
+      "min_spent": 20000.0,
+      "min_spending_score": 60,
+      "is_active": true
+    },
+    "status": "Draft",
+    "created_at": "2025-12-11T00:28:24.617863",
+    "stats": {
+      "sent": 0,
+      "opened": 0,
+      "clicked": 0
+    }
+  },
+  {
+    "id": "57826518-1432-4e46-8dd4-ddb890d4ba9f",
+    "title": "VIP Customer Exclusive - Full Targeting Test",
+    "content_template": "Dear {name}, as a valued customer from {city}, you qualify!",
+    "target_segment_criteria": {
+      "city": "Istanbul",
+      "min_age": 25,
+      "max_age": 45,
+      "min_spending_score": 50,
+      "max_spending_score": 90,
+      "min_spent": 15000.0,
+      "max_spent": 40000.0,
+      "is_active": true
+    },
+    "status": "Draft",
+    "created_at": "2025-12-11T00:28:52.381184",
+    "stats": {
+      "sent": 0,
+      "opened": 0,
+      "clicked": 0
+    }
   }
 ]

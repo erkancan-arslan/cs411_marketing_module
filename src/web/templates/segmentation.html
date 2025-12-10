@@ -93,6 +93,36 @@
                         </div>
                     </div>
                     
+                    <!-- Total Spent Range -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="bi bi-currency-dollar"></i> Total Spent
+                        </label>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <input 
+                                    type="number" 
+                                    class="form-control" 
+                                    name="min_spent" 
+                                    placeholder="Min $"
+                                    min="0"
+                                    step="0.01"
+                                    value="{{ criteria.min_spent if criteria.min_spent }}">
+                            </div>
+                            <div class="col-6">
+                                <input 
+                                    type="number" 
+                                    class="form-control" 
+                                    name="max_spent" 
+                                    placeholder="Max $"
+                                    min="0"
+                                    step="0.01"
+                                    value="{{ criteria.max_spent if criteria.max_spent }}">
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">Filter by customer lifetime spending</small>
+                    </div>
+                    
                     <!-- Active Status -->
                     <div class="mb-3">
                         <label for="is_active" class="form-label">
@@ -239,7 +269,16 @@
         {% if customers and customers|length > 0 %}
         <!-- Action Button -->
         <div class="mt-3">
-            <a href="{{ url_for('campaign_new') }}" class="btn btn-success">
+            <a href="{{ url_for('campaign_new', 
+                city=criteria.city if criteria.city else '', 
+                min_age=criteria.min_age if criteria.min_age else '', 
+                max_age=criteria.max_age if criteria.max_age else '', 
+                min_spending_score=criteria.min_spending_score if criteria.min_spending_score else '', 
+                max_spending_score=criteria.max_spending_score if criteria.max_spending_score else '', 
+                min_spent=criteria.min_spent if criteria.min_spent else '', 
+                max_spent=criteria.max_spent if criteria.max_spent else '', 
+                is_active='true' if criteria.is_active == True else ('false' if criteria.is_active == False else '')) }}" 
+               class="btn btn-success">
                 <i class="bi bi-megaphone"></i> Create Campaign for this Segment
             </a>
         </div>

@@ -214,6 +214,8 @@ def segmentation():
         max_age = request.form.get('max_age', '').strip()
         min_spending_score = request.form.get('min_spending_score', '').strip()
         max_spending_score = request.form.get('max_spending_score', '').strip()
+        min_spent = request.form.get('min_spent', '').strip()
+        max_spent = request.form.get('max_spent', '').strip()
         is_active = request.form.get('is_active', '')
         
         # Build criteria dictionary
@@ -227,6 +229,10 @@ def segmentation():
             criteria['min_spending_score'] = int(min_spending_score)
         if max_spending_score:
             criteria['max_spending_score'] = int(max_spending_score)
+        if min_spent:
+            criteria['min_spent'] = float(min_spent)
+        if max_spent:
+            criteria['max_spent'] = float(max_spent)
         if is_active:
             criteria['is_active'] = is_active == 'true'
         
@@ -295,6 +301,10 @@ def campaign_new():
         city = request.form.get('city', '').strip()
         min_age = request.form.get('min_age', '').strip()
         max_age = request.form.get('max_age', '').strip()
+        min_spending_score = request.form.get('min_spending_score', '').strip()
+        max_spending_score = request.form.get('max_spending_score', '').strip()
+        min_spent = request.form.get('min_spent', '').strip()
+        max_spent = request.form.get('max_spent', '').strip()
         is_active = request.form.get('is_active', '')
         
         if city:
@@ -303,6 +313,14 @@ def campaign_new():
             criteria['min_age'] = int(min_age)
         if max_age:
             criteria['max_age'] = int(max_age)
+        if min_spending_score:
+            criteria['min_spending_score'] = int(min_spending_score)
+        if max_spending_score:
+            criteria['max_spending_score'] = int(max_spending_score)
+        if min_spent:
+            criteria['min_spent'] = float(min_spent)
+        if max_spent:
+            criteria['max_spent'] = float(max_spent)
         if is_active:
             criteria['is_active'] = is_active == 'true'
         

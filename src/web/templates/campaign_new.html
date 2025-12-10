@@ -88,7 +88,7 @@
                                 <select class="form-select" id="city" name="city">
                                     <option value="">All Cities</option>
                                     {% for city in cities %}
-                                    <option value="{{ city }}">{{ city }}</option>
+                                    <option value="{{ city }}" {% if request.args.get('city') == city %}selected{% endif %}>{{ city }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -106,7 +106,8 @@
                                             name="min_age" 
                                             placeholder="Min Age"
                                             min="0"
-                                            max="100">
+                                            max="100"
+                                            value="{{ request.args.get('min_age', '') }}">
                                     </div>
                                     <div class="col-6">
                                         <input 
@@ -115,7 +116,66 @@
                                             name="max_age" 
                                             placeholder="Max Age"
                                             min="0"
-                                            max="100">
+                                            max="100"
+                                            value="{{ request.args.get('max_age', '') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Spending Score Range -->
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    <i class="bi bi-star"></i> Spending Score
+                                </label>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <input 
+                                            type="number" 
+                                            class="form-control" 
+                                            name="min_spending_score" 
+                                            placeholder="Min Score"
+                                            min="1"
+                                            max="100"
+                                            value="{{ request.args.get('min_spending_score', '') }}">
+                                    </div>
+                                    <div class="col-6">
+                                        <input 
+                                            type="number" 
+                                            class="form-control" 
+                                            name="max_spending_score" 
+                                            placeholder="Max Score"
+                                            min="1"
+                                            max="100"
+                                            value="{{ request.args.get('max_spending_score', '') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Total Spent Range -->
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    <i class="bi bi-currency-dollar"></i> Total Spent
+                                </label>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <input 
+                                            type="number" 
+                                            class="form-control" 
+                                            name="min_spent" 
+                                            placeholder="Min $"
+                                            min="0"
+                                            step="0.01"
+                                            value="{{ request.args.get('min_spent', '') }}">
+                                    </div>
+                                    <div class="col-6">
+                                        <input 
+                                            type="number" 
+                                            class="form-control" 
+                                            name="max_spent" 
+                                            placeholder="Max $"
+                                            min="0"
+                                            step="0.01"
+                                            value="{{ request.args.get('max_spent', '') }}">
                                     </div>
                                 </div>
                             </div>
@@ -127,8 +187,8 @@
                                 </label>
                                 <select class="form-select" id="is_active" name="is_active">
                                     <option value="">All Customers</option>
-                                    <option value="true">Active Only</option>
-                                    <option value="false">Inactive Only</option>
+                                    <option value="true" {% if request.args.get('is_active') == 'true' %}selected{% endif %}>Active Only</option>
+                                    <option value="false" {% if request.args.get('is_active') == 'false' %}selected{% endif %}>Inactive Only</option>
                                 </select>
                             </div>
                             

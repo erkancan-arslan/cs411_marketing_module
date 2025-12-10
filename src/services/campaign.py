@@ -164,6 +164,26 @@ class CampaignService:
         
         # Update campaign statistics
         campaign.stats['sent'] = emails_sent
+        
+        # Simulate opened and clicked statistics for analytics
+        # This provides realistic data for Phase 4 Analytics Dashboard
+        if emails_sent > 0:
+            # Simulate open rate: 30-70% of sent emails
+            import random
+            open_rate = random.uniform(0.30, 0.70)
+            emails_opened = int(emails_sent * open_rate)
+            
+            # Simulate click rate: 10-30% of opened emails
+            click_rate = random.uniform(0.10, 0.30)
+            emails_clicked = int(emails_opened * click_rate)
+            
+            campaign.stats['opened'] = emails_opened
+            campaign.stats['clicked'] = emails_clicked
+            
+            print(f"   📊 Simulated engagement:")
+            print(f"      Opened: {emails_opened} ({open_rate*100:.1f}% open rate)")
+            print(f"      Clicked: {emails_clicked} ({click_rate*100:.1f}% click rate of opens)")
+        
         campaign.status = 'Sent'
         
         # Save updated campaign
