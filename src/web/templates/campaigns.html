@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+{% block title %}Campaigns{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1><i class="bi bi-megaphone"></i> Marketing Campaigns</h1>
+                <p>Manage and monitor your marketing campaigns.</p>
+            </div>
+            <div>
+                <a href="{{ url_for('campaign_new') }}" class="btn btn-success btn-lg">
+                    <i class="bi bi-plus-circle"></i> Create Campaign
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Campaigns List -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-list-task"></i> All Campaigns
+                    {% if campaigns %}
+                        <span class="badge bg-primary ms-2">{{ campaigns|length }}</span>
+                    {% endif %}
+                </h5>
+            </div>
+            <div class="card-body p-0">
+                {% if campaigns %}
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Campaign Title</th>
+                                <th style="width: 15%;">Status</th>
+                                <th style="width: 20%;">Target Criteria</th>
+                                <th style="width: 10%;" class="text-center">Emails Sent</th>
+                                <th style="width: 10%;" class="text-center">Opened</th>
+                                <th style="width: 10%;">Created</th>
+                                <th style="width: 5%;" class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for campaign in campaigns %}
+                            <tr>
+                                <td>
+                                    <div>
+                                        <strong>{{ campaign.title }}</strong>
+                                    </div>
+                                    <small class="text-muted">
+                                        {{ campaign.content_template[:50] }}{% if campaign.content_template|length > 50 %}...{% endif %}
+                                    </small>
+                                </td>
+                                <td>
+                                    {% if campaign.status == 'Sent' %}
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-check-circle"></i> Sent
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="bi bi-pencil-square"></i> Draft
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        {% if campaign.target_segment_criteria.city %}
+                                            <span class="badge bg-light text-dark">
+                                                <i class="bi bi-geo-alt"></i> {{ campaign.target_segment_criteria.city }}
+                                            </span>
+                                        {% endif %}
+                                        {% if campaign.target_segment_criteria.min_age %}
+                                            <span class="badge bg-light text-dark">
+                                                <i class="bi bi-person"></i> Age {{ campaign.target_segment_criteria.min_age }}+
+                                            </span>
+                                        {% endif %}
+                                        {% if campaign.target_segment_criteria.is_active != None %}
+                                            <span class="badge bg-light text-dark">
+                                                <i class="bi bi-activity"></i> 
+                                                {% if campaign.target_segment_criteria.is_active %}Active{% else %}Inactive{% endif %}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-primary fs-6">{{ campaign.stats.sent }}</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-info fs-6">{{ campaign.stats.opened }}</span>
+                                </td>
+                                <td>
+                                    <small>{{ campaign.created_at|datetime_format('%b %d, %Y') }}</small>
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ url_for('campaign_detail', campaign_id=campaign.id) }}" 
+                                       class="btn btn-sm btn-outline-primary"
+                                       title="View Details">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <!-- Empty State -->
+                <div class="p-5 text-center text-muted">
+                    <i class="bi bi-megaphone" style="font-size: 4rem; opacity: 0.3;"></i>
+                    <h4 class="mt-3">No Campaigns Yet</h4>
+                    <p>Create your first marketing campaign to reach your customers.</p>
+                    <a href="{{ url_for('campaign_new') }}" class="btn btn-success btn-lg mt-3">
+                        <i class="bi bi-plus-circle"></i> Create Your First Campaign
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if campaigns %}
+<!-- Campaign Summary Cards -->
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h3 class="text-primary">{{ campaigns|length }}</h3>
+                <p class="text-muted mb-0">Total Campaigns</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h3 class="text-success">{{ campaigns|selectattr('status', 'equalto', 'Sent')|list|length }}</h3>
+                <p class="text-muted mb-0">Campaigns Sent</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h3 class="text-warning">{{ campaigns|selectattr('status', 'equalto', 'Draft')|list|length }}</h3>
+                <p class="text-muted mb-0">Draft Campaigns</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

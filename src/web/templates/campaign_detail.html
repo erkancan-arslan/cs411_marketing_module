@@ -1,0 +1,282 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ campaign.title }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <h1><i class="bi bi-megaphone"></i> {{ campaign.title }}</h1>
+                <p class="mb-0">
+                    Campaign ID: <code>{{ campaign.id }}</code>
+                </p>
+            </div>
+            <div>
+                {% if campaign.status == 'Sent' %}
+                    <span class="badge bg-success fs-5">
+                        <i class="bi bi-check-circle"></i> Sent
+                    </span>
+                {% else %}
+                    <span class="badge bg-warning text-dark fs-5">
+                        <i class="bi bi-pencil-square"></i> Draft
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Left Column: Campaign Information -->
+    <div class="col-md-8">
+        <!-- Campaign Content -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-file-text"></i> Campaign Content</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="text-muted small">EMAIL SUBJECT:</label>
+                    <h5>{{ campaign.title }}</h5>
+                </div>
+                <div>
+                    <label class="text-muted small">EMAIL BODY TEMPLATE:</label>
+                    <div class="border rounded p-3 bg-light">
+                        <pre class="mb-0" style="white-space: pre-wrap; font-family: inherit;">{{ campaign.content_template }}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Target Audience Preview -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-people"></i> Target Audience
+                    <span class="badge bg-primary">{{ target_audience_size }} customers</span>
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- Criteria -->
+                <div class="mb-3">
+                    <label class="text-muted small">TARGETING CRITERIA:</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% if campaign.target_segment_criteria.city %}
+                            <span class="badge bg-info">
+                                <i class="bi bi-geo-alt"></i> City: {{ campaign.target_segment_criteria.city }}
+                            </span>
+                        {% endif %}
+                        {% if campaign.target_segment_criteria.min_age %}
+                            <span class="badge bg-info">
+                                <i class="bi bi-person"></i> Min Age: {{ campaign.target_segment_criteria.min_age }}
+                            </span>
+                        {% endif %}
+                        {% if campaign.target_segment_criteria.max_age %}
+                            <span class="badge bg-info">
+                                <i class="bi bi-person"></i> Max Age: {{ campaign.target_segment_criteria.max_age }}
+                            </span>
+                        {% endif %}
+                        {% if campaign.target_segment_criteria.is_active != None %}
+                            <span class="badge bg-info">
+                                <i class="bi bi-activity"></i> 
+                                Status: {% if campaign.target_segment_criteria.is_active %}Active{% else %}Inactive{% endif %}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Sample Recipients -->
+                {% if target_customers %}
+                <div>
+                    <label class="text-muted small">SAMPLE RECIPIENTS (First 10):</label>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>City</th>
+                                    <th>Age</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for customer in target_customers %}
+                                <tr>
+                                    <td>{{ customer.name }}</td>
+                                    <td><small class="text-muted">{{ customer.email }}</small></td>
+                                    <td>{{ customer.city }}</td>
+                                    <td>{{ customer.age }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% if target_audience_size > 10 %}
+                    <small class="text-muted">
+                        <i class="bi bi-info-circle"></i> 
+                        Showing 10 of {{ target_audience_size }} total recipients.
+                    </small>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right Column: Actions & Stats -->
+    <div class="col-md-4">
+        <!-- Campaign Stats (if sent) -->
+        {% if campaign.status == 'Sent' %}
+        <div class="card mb-3">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-graph-up"></i> Campaign Statistics</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-muted">Emails Sent:</span>
+                        <h4 class="mb-0 text-primary">{{ campaign.stats.sent }}</h4>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-primary" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-muted">Emails Opened:</span>
+                        <h4 class="mb-0 text-success">{{ campaign.stats.opened }}</h4>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-success" style="width: {% if campaign.stats.sent > 0 %}{{ (campaign.stats.opened / campaign.stats.sent * 100)|int }}{% else %}0{% endif %}%"></div>
+                    </div>
+                    {% if campaign.stats.sent > 0 %}
+                    <small class="text-muted">
+                        {{ (campaign.stats.opened / campaign.stats.sent * 100)|round(1) }}% open rate
+                    </small>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-muted">Links Clicked:</span>
+                        <h4 class="mb-0 text-warning">{{ campaign.stats.clicked }}</h4>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: {% if campaign.stats.sent > 0 %}{{ (campaign.stats.clicked / campaign.stats.sent * 100)|int }}{% else %}0{% endif %}%"></div>
+                    </div>
+                    {% if campaign.stats.sent > 0 %}
+                    <small class="text-muted">
+                        {{ (campaign.stats.clicked / campaign.stats.sent * 100)|round(1) }}% click rate
+                    </small>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Campaign Info -->
+        <div class="card mb-3 bg-light">
+            <div class="card-body">
+                <h6 class="text-muted small mb-3">CAMPAIGN DETAILS</h6>
+                <p class="mb-2">
+                    <i class="bi bi-calendar-check"></i>
+                    <strong>Created:</strong><br>
+                    <small>{{ campaign.created_at|datetime_format('%B %d, %Y at %I:%M %p') }}</small>
+                </p>
+                <p class="mb-0">
+                    <i class="bi bi-check2-circle"></i>
+                    <strong>Status:</strong><br>
+                    <small>Campaign has been sent successfully</small>
+                </p>
+            </div>
+        </div>
+        
+        {% else %}
+        <!-- Launch Campaign Form (Draft status) -->
+        <div class="card mb-3 border-warning">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="bi bi-rocket-takeoff"></i> Launch Campaign</h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-3">
+                    This campaign is ready to launch. You will send emails to 
+                    <strong>{{ target_audience_size }} customers</strong>.
+                </p>
+                
+                <form method="POST" action="{{ url_for('campaign_launch', campaign_id=campaign.id) }}" 
+                      onsubmit="return confirm('Are you sure you want to launch this campaign? This will send emails to {{ target_audience_size }} customers.');">
+                    
+                    <!-- Email Strategy Selection -->
+                    <div class="mb-3">
+                        <label class="text-muted small mb-2">EMAIL DELIVERY MODE:</label>
+                        <div class="form-check">
+                            <input 
+                                class="form-check-input" 
+                                type="radio" 
+                                name="use_real_email" 
+                                id="mock_email" 
+                                value="false" 
+                                checked>
+                            <label class="form-check-label" for="mock_email">
+                                <i class="bi bi-terminal"></i> <strong>Simulation Mode</strong>
+                                <br>
+                                <small class="text-muted">
+                                    Emails will be logged to console (Mock Email Provider)
+                                </small>
+                            </label>
+                        </div>
+                        <div class="form-check mt-2">
+                            <input 
+                                class="form-check-input" 
+                                type="radio" 
+                                name="use_real_email" 
+                                id="real_email" 
+                                value="true">
+                            <label class="form-check-label" for="real_email">
+                                <i class="bi bi-envelope-at"></i> <strong>Real Email Mode</strong>
+                                <br>
+                                <small class="text-muted">
+                                    Send actual emails via SMTP (requires configuration)
+                                </small>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info small">
+                        <i class="bi bi-lightbulb"></i>
+                        <strong>Strategy Pattern:</strong> Choose between Mock or Real email sending at launch time.
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-warning btn-lg">
+                            <i class="bi bi-send"></i> Launch Campaign Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Campaign Info -->
+        <div class="card bg-light">
+            <div class="card-body">
+                <h6 class="text-muted small mb-3">CAMPAIGN DETAILS</h6>
+                <p class="mb-0">
+                    <i class="bi bi-calendar-plus"></i>
+                    <strong>Created:</strong><br>
+                    <small>{{ campaign.created_at|datetime_format('%B %d, %Y at %I:%M %p') }}</small>
+                </p>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Back Button -->
+        <div class="d-grid mt-3">
+            <a href="{{ url_for('campaigns_list') }}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Back to Campaigns
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends "layout.html" %}
+
+{% block title %}Create Campaign{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-plus-circle"></i> Create New Campaign</h1>
+        <p>Design and configure your marketing campaign.</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <form method="POST" action="{{ url_for('campaign_new') }}">
+            <div class="row">
+                <!-- Left Column: Campaign Details -->
+                <div class="col-md-7">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-file-text"></i> Campaign Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Campaign Title -->
+                            <div class="mb-3">
+                                <label for="title" class="form-label">
+                                    <i class="bi bi-tag"></i> Campaign Title *
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="title" 
+                                    name="title" 
+                                    placeholder="e.g., Summer Sale 2025"
+                                    required
+                                    autofocus>
+                                <small class="form-text text-muted">
+                                    This will be used as the email subject line.
+                                </small>
+                            </div>
+                            
+                            <!-- Content Template -->
+                            <div class="mb-3">
+                                <label for="content_template" class="form-label">
+                                    <i class="bi bi-envelope"></i> Email Content Template *
+                                </label>
+                                <textarea 
+                                    class="form-control" 
+                                    id="content_template" 
+                                    name="content_template" 
+                                    rows="8"
+                                    placeholder="Hello {name} from {city}!&#10;&#10;We have exciting news for you..."
+                                    required></textarea>
+                                <small class="form-text text-muted">
+                                    Use <code>{name}</code>, <code>{email}</code>, <code>{city}</code> for personalization.
+                                </small>
+                            </div>
+                            
+                            <!-- Preview Box -->
+                            <div class="alert alert-info">
+                                <h6><i class="bi bi-lightbulb"></i> Preview Example:</h6>
+                                <p class="mb-0">
+                                    <strong>Subject:</strong> <span class="text-muted">[Your Title]</span><br>
+                                    <strong>Body:</strong> <span class="text-muted">Hello Ayşe Yılmaz from Istanbul! We have exciting news...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Target Audience -->
+                <div class="col-md-5">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-bullseye"></i> Target Audience</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted small mb-3">
+                                Define the customer segment for this campaign. At least one criterion is required.
+                            </p>
+                            
+                            <!-- City -->
+                            <div class="mb-3">
+                                <label for="city" class="form-label">
+                                    <i class="bi bi-geo-alt"></i> City
+                                </label>
+                                <select class="form-select" id="city" name="city">
+                                    <option value="">All Cities</option>
+                                    {% for city in cities %}
+                                    <option value="{{ city }}">{{ city }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <!-- Age Range -->
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    <i class="bi bi-person"></i> Age Range
+                                </label>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <input 
+                                            type="number" 
+                                            class="form-control" 
+                                            name="min_age" 
+                                            placeholder="Min Age"
+                                            min="0"
+                                            max="100">
+                                    </div>
+                                    <div class="col-6">
+                                        <input 
+                                            type="number" 
+                                            class="form-control" 
+                                            name="max_age" 
+                                            placeholder="Max Age"
+                                            min="0"
+                                            max="100">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Active Status -->
+                            <div class="mb-3">
+                                <label for="is_active" class="form-label">
+                                    <i class="bi bi-activity"></i> Customer Status
+                                </label>
+                                <select class="form-select" id="is_active" name="is_active">
+                                    <option value="">All Customers</option>
+                                    <option value="true">Active Only</option>
+                                    <option value="false">Inactive Only</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Help Text -->
+                            <div class="alert alert-warning small">
+                                <i class="bi bi-exclamation-triangle"></i>
+                                <strong>Note:</strong> The campaign will target customers matching ALL selected criteria.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Preview Segment -->
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <i class="bi bi-info-circle text-primary" style="font-size: 2rem;"></i>
+                            <p class="mt-2 mb-0 small text-muted">
+                                After creating the campaign, you'll be able to preview the target audience before launching.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ url_for('campaigns_list') }}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-arrow-left"></i> Cancel
+                                </a>
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="bi bi-check-circle"></i> Create Campaign
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

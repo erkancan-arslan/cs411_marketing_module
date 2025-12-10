@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-speedometer2"></i> Dashboard</h1>
+        <p>Welcome back, {{ username }}! Here's your system overview.</p>
+    </div>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card stat-card bg-primary text-white">
+            <div class="card-body">
+                <div class="stat-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+                <div class="stat-value">{{ stats.total_customers }}</div>
+                <div class="stat-label text-white-50">Total Customers</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card stat-card bg-success text-white">
+            <div class="card-body">
+                <div class="stat-icon">
+                    <i class="bi bi-person-check"></i>
+                </div>
+                <div class="stat-value">{{ stats.active_customers }}</div>
+                <div class="stat-label text-white-50">Active Customers</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card stat-card bg-info text-white">
+            <div class="card-body">
+                <div class="stat-icon">
+                    <i class="bi bi-megaphone"></i>
+                </div>
+                <div class="stat-value">{{ stats.total_campaigns }}</div>
+                <div class="stat-label text-white-50">Total Campaigns</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card stat-card bg-warning text-white">
+            <div class="card-body">
+                <div class="stat-icon">
+                    <i class="bi bi-send-check"></i>
+                </div>
+                <div class="stat-value">{{ stats.sent_campaigns }}</div>
+                <div class="stat-label text-white-50">Sent Campaigns</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-lightning"></i> Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2 d-md-flex">
+                    <a href="{{ url_for('segmentation') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-funnel"></i> Segment Customers
+                    </a>
+                    <a href="{{ url_for('campaign_new') }}" class="btn btn-outline-success">
+                        <i class="bi bi-plus-circle"></i> Create Campaign
+                    </a>
+                    <a href="{{ url_for('campaigns_list') }}" class="btn btn-outline-info">
+                        <i class="bi bi-list-task"></i> View All Campaigns
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Campaigns -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-clock-history"></i> Recent Campaigns</h5>
+                <a href="{{ url_for('campaigns_list') }}" class="btn btn-sm btn-outline-primary">
+                    View All <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="card-body p-0">
+                {% if recent_campaigns %}
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Campaign Title</th>
+                                <th>Status</th>
+                                <th>Target Criteria</th>
+                                <th>Emails Sent</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for campaign in recent_campaigns %}
+                            <tr>
+                                <td>
+                                    <strong>{{ campaign.title }}</strong>
+                                </td>
+                                <td>
+                                    {% if campaign.status == 'Sent' %}
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-check-circle"></i> Sent
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="bi bi-pencil"></i> Draft
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <small class="text-muted">
+                                        {% if campaign.target_segment_criteria.city %}
+                                            <i class="bi bi-geo-alt"></i> {{ campaign.target_segment_criteria.city }}
+                                        {% endif %}
+                                        {% if campaign.target_segment_criteria.min_age %}
+                                            <i class="bi bi-person"></i> {{ campaign.target_segment_criteria.min_age }}+
+                                        {% endif %}
+                                    </small>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">{{ campaign.stats.sent }}</span>
+                                </td>
+                                <td>
+                                    <small>{{ campaign.created_at|datetime_format('%b %d, %Y') }}</small>
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('campaign_detail', campaign_id=campaign.id) }}" 
+                                       class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="p-5 text-center text-muted">
+                    <i class="bi bi-inbox" style="font-size: 3rem; opacity: 0.3;"></i>
+                    <p class="mt-3">No campaigns yet. Create your first campaign to get started!</p>
+                    <a href="{{ url_for('campaign_new') }}" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> Create Campaign
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

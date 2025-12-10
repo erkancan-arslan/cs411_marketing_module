@@ -9,6 +9,10 @@ All business logic is delegated to the Service Layer.
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from functools import wraps
 import os
+import sys
+
+# Add project root to path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 # Import models, repositories, and services
 from src.models.customer import Customer
@@ -437,6 +441,6 @@ if __name__ == '__main__':
     # Run the application
     app.run(
         host='0.0.0.0',
-        port=5000,
+        port=5001,
         debug=app.config['DEBUG']
     )
