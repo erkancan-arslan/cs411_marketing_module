@@ -20,6 +20,7 @@ from src.models.campaign import Campaign
 from src.repository.json_repo import JsonRepository
 from src.services.segmentation import SegmentationService
 from src.services.campaign import CampaignService
+from src.services.analytics import AnalyticsService
 from config import config
 
 
@@ -56,11 +57,17 @@ def create_app(config_name='development'):
     
     # Initialize services (Business Logic Layer)
     segmentation_service = SegmentationService(customer_repository)
-    campaign_service = CampaignService(campaign_repository, segmentation_service)
+    analytics_service = AnalyticsService(campaign_repository)
+    campaign_service = CampaignService(
+        campaign_repository, 
+        segmentation_service,
+        analytics_service  # Phase 4: Inject analytics service
+    )
     
     # Store services in app context for access in routes
     app.segmentation_service = segmentation_service
     app.campaign_service = campaign_service
+    app.analytics_service = analytics_service  # Phase 4: Add analytics to context
     
     return app
 
@@ -418,6 +425,42 @@ def campaign_launch(campaign_id):
         flash(f'Error launching campaign: {str(e)}', 'danger')
     
     return redirect(url_for('campaign_detail', campaign_id=campaign_id))
+
+
+@app.route('/campaigns/<campaign_id>/analytics')
+@login_required
+def campaign_analytics(campaign_id):
+    """
+    Campaign analytics dashboard route.
+    
+    Displays comprehensive performance metrics and visualizations for a sent campaign.
+    Uses AnalyticsService to calculate metrics and Chart.js for visualizations.
+    
+    Args:
+        campaign_id: Campaign unique identifier
+    """
+    # Delegate to Service Layer for performance calculation
+    try:
+        performance = app.analytics_service.get_campaign_performance(campaign_id)
+        geo_dist = app.analytics_service.get_geographic_distribution(campaign_id)
+        device_dist = app.analytics_service.get_device_distribution(campaign_id)
+        
+        # Prepare data for Chart.js
+        geo_labels = list(geo_dist.keys())
+        geo_values = list(geo_dist.values())
+        
+        return render_template(
+            'analytics.html',
+            campaign_id=campaign_id,
+            performance=performance,
+            geo_labels=geo_labels,
+            geo_values=geo_values,
+            device_dist=device_dist
+        )
+        
+    except ValueError as e:
+        flash(f'Error loading analytics: {str(e)}', 'danger')
+        return redirect(url_for('campaigns_list'))
 
 
 # ============================================================================

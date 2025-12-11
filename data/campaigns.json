@@ -206,5 +206,39 @@
       "opened": 0,
       "clicked": 0
     }
+  },
+  {
+    "id": "5858f147-4ece-4e36-9718-2330a5e24bc7",
+    "title": "Phase 4 Analytics Test Campaign",
+    "content_template": "Hello {name} from {city}! We're testing our new analytics dashboard.",
+    "target_segment_criteria": {
+      "is_active": true,
+      "city": "Istanbul"
+    },
+    "status": "Sent",
+    "created_at": "2025-12-11T00:38:49.520324",
+    "stats": {
+      "sent": 6,
+      "opened": 3,
+      "clicked": 0,
+      "failed": 0
+    }
+  },
+  {
+    "id": "74e67da1-0ca4-4e1b-acf3-73f3c2e0ef1f",
+    "title": "Phase 4 Test - High Value Customers",
+    "content_template": "Exclusive offer for our premium customers!",
+    "target_segment_criteria": {
+      "min_spent": 20000.0,
+      "is_active": true
+    },
+    "status": "Sent",
+    "created_at": "2025-12-11T00:38:49.522085",
+    "stats": {
+      "sent": 29,
+      "opened": 15,
+      "clicked": 2,
+      "failed": 0
+    }
   }
 ]

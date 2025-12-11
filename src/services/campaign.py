@@ -4,12 +4,16 @@ Business logic for creating and launching marketing campaigns.
 """
 import uuid
 from datetime import datetime
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, TYPE_CHECKING
 from src.models.campaign import Campaign
 from src.models.customer import Customer
 from src.repository.json_repo import JsonRepository
 from src.services.segmentation import SegmentationService
 from src.services.email_service import IEmailProvider, EmailServiceFactory
+
+# Avoid circular import
+if TYPE_CHECKING:
+    from src.services.analytics import AnalyticsService
 
 
 class CampaignService:
@@ -21,12 +25,14 @@ class CampaignService:
     2. Target audience segmentation
     3. Email sending (via Strategy Pattern)
     4. Campaign status tracking and statistics
+    5. Analytics simulation (Phase 4)
     """
     
     def __init__(
         self,
         campaign_repository: JsonRepository[Campaign],
-        segmentation_service: SegmentationService
+        segmentation_service: SegmentationService,
+        analytics_service: Optional['AnalyticsService'] = None
     ):
         """
         Initialize the campaign service.
@@ -34,9 +40,11 @@ class CampaignService:
         Args:
             campaign_repository: Repository for campaign data access
             segmentation_service: Service for customer segmentation
+            analytics_service: Optional analytics service for engagement simulation
         """
         self.campaign_repository = campaign_repository
         self.segmentation_service = segmentation_service
+        self.analytics_service = analytics_service
     
     def create_campaign(
         self,
@@ -164,30 +172,17 @@ class CampaignService:
         
         # Update campaign statistics
         campaign.stats['sent'] = emails_sent
-        
-        # Simulate opened and clicked statistics for analytics
-        # This provides realistic data for Phase 4 Analytics Dashboard
-        if emails_sent > 0:
-            # Simulate open rate: 30-70% of sent emails
-            import random
-            open_rate = random.uniform(0.30, 0.70)
-            emails_opened = int(emails_sent * open_rate)
-            
-            # Simulate click rate: 10-30% of opened emails
-            click_rate = random.uniform(0.10, 0.30)
-            emails_clicked = int(emails_opened * click_rate)
-            
-            campaign.stats['opened'] = emails_opened
-            campaign.stats['clicked'] = emails_clicked
-            
-            print(f"   📊 Simulated engagement:")
-            print(f"      Opened: {emails_opened} ({open_rate*100:.1f}% open rate)")
-            print(f"      Clicked: {emails_clicked} ({click_rate*100:.1f}% click rate of opens)")
-        
+        campaign.stats['failed'] = emails_failed
         campaign.status = 'Sent'
         
-        # Save updated campaign
+        # Save updated campaign (before analytics simulation)
         self.campaign_repository.update(campaign.id, campaign)
+        
+        # PHASE 4: Trigger analytics simulation immediately after launch
+        # This ensures the dashboard has data to display
+        if self.analytics_service and emails_sent > 0:
+            print(f"\n📊 Triggering analytics simulation...")
+            self.analytics_service.simulate_engagement(campaign.id)
         
         print(f"\n✅ Campaign launched successfully!")
         print(f"   Emails sent: {emails_sent}")
