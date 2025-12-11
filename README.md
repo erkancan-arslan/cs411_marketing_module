@@ -137,34 +137,4 @@ The application will be available at `http://localhost:5001`
 2. **Dashboard**: View overview statistics and recent campaigns
 3. **Customer Segmentation**: Create and manage customer segments based on various criteria
 4. **Campaigns**: Create targeted marketing campaigns for specific customer segments
-5. **Analytics**: Monitor campaign performance with interactive charts and metrics
-
-## Configuration
-
-Configuration settings are managed in `config.py`:
-
-```python
-# Data file paths
-CUSTOMERS_DATA_FILE = 'data/customers.json'
-CAMPAIGNS_DATA_FILE = 'data/campaigns.json'
-
-# Email configuration (for SMTP strategy)
-SMTP_HOST = 'smtp.gmail.com'
-SMTP_PORT = 587
-SMTP_USER = ''
-SMTP_PASSWORD = ''
-
-# Debug mode
-DEBUG = True
-```
-
-Environment variables can be set using a `.env` file:
-
-```
-SECRET_KEY=your-secret-key
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your-email@example.com
-SMTP_PASSWORD=your-password
-FLASK_DEBUG=True
-```
+5. **Analytics**: Monitor campaign performance with interactive charts and 
