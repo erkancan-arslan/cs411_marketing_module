@@ -94,7 +94,7 @@ cs411_marketing_module/
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/erkancan-arslan/cs411_marketing_module
 cd cs411_marketing_module
 ```
 
@@ -121,7 +121,7 @@ python generate_data.py
 Start the Flask development server:
 
 ```bash
-python run.py
+python app.py
 ```
 
 The application will be available at `http://localhost:5001`
